@@ -32,7 +32,7 @@ public class Part_III {
             System.out.print("x ");
         }
         if (g!=0){
-            System.out.print(g+" = 0");
+            System.out.print(g+" = 0 ");
         }
         if (dis<0){
             System.out.println("решений нет");
