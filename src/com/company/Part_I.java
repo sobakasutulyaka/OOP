@@ -1,172 +1,141 @@
 package com.company;
-import java.util.*;
+import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class Part_I {
 
     public static void main() {
-        Scanner sc = new Scanner(System.in);
-        String zadanie = sc.nextLine();
-        int x, y, z;
-        double d;
-        switch (zadanie) {
-            case "repeat":
-                System.out.println(repeat(sc));
-            case "differenceMaxMin":
-                System.out.println(raznMaxMin());
-            case "isAvgWhole":
-                System.out.println(isAvgWhole());
-            case "cumulativeSum":
-                ziklsum();
-            case "getDecimalPlaces":
-                d=sc.nextDouble();
-                System.out.println(znaki(d));
-            case "Fibonacci":
+        Scanner in = new Scanner(System.in);
+        Scanner sc=new Scanner(System.in);
+        String zadanie=sc.nextLine();
+        int x,y,z;
+        switch (zadanie){
+            case "remainder":
                 x=sc.nextInt();
-                System.out.println(fib(x));
-            case "index":
-                System.out.println(index28());
-            case "isStrangePair":
-                System.out.println(stran(sc));
-            case "boxSeq":
-                d=sc.nextDouble();
-                System.out.println(boxSeq(d));
-            case "PrefSuf":
-                System.out.println(PrefSuf(sc));
+                y=sc.nextInt();
+                System.out.println(remainder(x,y));
+            case "triArea":
+                x=sc.nextInt();
+                y=sc.nextInt();
+                System.out.println(triArea(x,y));
+            case "animals":
+                x=sc.nextInt();
+                y=sc.nextInt();
+                z=sc.nextInt();
+                System.out.println(animals(x,y,z));
+            case "profitableGamble":
+                x=sc.nextInt();
+                y=sc.nextInt();
+                z=sc.nextInt();
+                System.out.println(profitableGamble(x,y,z));
+            case "operation":
+                x=sc.nextInt();
+                y=sc.nextInt();
+                z=sc.nextInt();
+                System.out.println(operation(x,y,z));
+            case "ctoa":
+                System.out.println(ctoa());
+            case "addUpTo":
+                x=sc.nextInt();
+                System.out.println(addUpTo(x));
+            case "nextEdge":
+                x=sc.nextInt();
+                y=sc.nextInt();
+                System.out.println(nextEdge(x,y));
+            case "sumOfCubes":
+                System.out.println(sumOfCubes(in));
+            case "abcmath":
+                x=sc.nextInt();
+                y=sc.nextInt();
+                z=sc.nextInt();
+                System.out.println(abcmath(x,y,z));
         }
-    }
-    public static String repeat(Scanner scanner){
-        String inputstr=scanner.nextLine();
-        int mnoz=scanner.nextInt();
-        StringBuilder result=new StringBuilder();
-        char[] stringArray=inputstr.toCharArray();
-        for (int counter=0;counter<inputstr.length();counter++)
-            result.append(String.valueOf(stringArray[counter]).repeat(Math.max(0,mnoz)));
-        return result.toString();
-    }
-    public static int raznMaxMin(){
-        System.out.println("Введите количество чисел и массив");
-        Scanner sc = new Scanner(System.in);
-        int size=sc.nextInt();
-        int array[]=new int[size];
-        for (int i=0; i<size;i++){
-            array[i]= sc.nextInt();
-        }
-        int max=0;
-        int min=0;
-        for (int i=0;i<size;i++) {
-            if (array[i] > max) {
-                max = array[i];
-            }
-        }
-        for (int i=0;i<size;i++){
-            if (array[i]<min){
-                min=array[i];
-            }
-        }
-        int rez=max-min;
-        return rez;
-    }
-    public static boolean isAvgWhole(){
-        System.out.println("Введите количество чисел и массив");
-        Scanner sc = new Scanner(System.in);
-        int size=sc.nextInt();
-        int array[]=new int[size];
-        for (int i=0; i<size;i++){
-            array[i]= sc.nextInt();
-        }
-        double sum=0;
-        for (int i=0;i<size;i++){
-            sum+=array[i];
-        }
-        double sred= sum / size;
-        Boolean x;
-        if (sred%1==0){
-            x=true;
-        }
-        else {
-            x=false;
-        }
-        return x;
-    }
-    public static void ziklsum(){
-        System.out.println("Введите количество чисел и массив");
-        Scanner sc = new Scanner(System.in);
-        int size=sc.nextInt();
-        int array[]=new int[size];
-        for (int i=0; i<size;i++){
-            array[i]= sc.nextInt();
-        }
-        for (int i=1;i<size;i++){
-            array[i]=array[i-1]+array[i];
-        }
-        for (int i=0;i<size;i++){
-            System.out.print(" "+array[i]);
-        }
-    }
-    public static int znaki(double d){
-        int sum=0;
-        while (d%1!=0){
-            d=d*10;
-            sum+=1;
-        }
-        return sum;
-    }
-    public static int fib(int x){
-        int a=1;
-        int b=1;
-        int sum_fib;
-        for (int i=0;i<x;i++){
-            sum_fib=a+b;
-            a=b;
-            b=sum_fib;
-        }
-        return a;
-    }
-    public static boolean index28(){
-        Scanner scanner=new Scanner(System.in);
-        String index=scanner.nextLine();
-        return index.matches("\\d{5}");
-    }
-    public static boolean stran(Scanner scanner){
-        String str1=scanner.nextLine();
-        String str2=scanner.nextLine();
-        boolean x;
-        if (str1.charAt(0)==str2.charAt(str2.length()-1)){
-            if (str2.charAt(0)==str1.charAt(str1.length()-1)){
-                x=true;
-            }
-            else
-                x=false;
-        }
-        else
-            x=false;
-        return x;
-    }
-    public static boolean PrefSuf(Scanner scanner) {
-        String str = scanner.nextLine();
-        String str2 = scanner.nextLine();
-        String str3 = scanner.nextLine();
-        boolean x = false;
-        switch (str3) {
-            case "prefix":
-                x=str.startsWith(str2);
-                break;
-            case "suffix":
-                x=str.endsWith(str2);
-                break;
-        }
-        return x;
     }
 
-    public static double boxSeq(double x){
-        double y;
-        if (x%2==0){
-            y=x;
+    public static int remainder(int x, int y) {
+        int z = x % y;
+        return z;
+    }
+    public static double triArea(int x, int y) {
+        double z = 0.5*x*y;
+        return z;
+    }
+    public static double animals(int x, int y, int z) {
+        double d = 2*x+4*x+4*z;
+        return  d;
+    }
+    public static String profitableGamble(int prob, int prize, int pay) {
+        String d;
+        if (prob*prize>pay) {
+            d = "true";
         }
         else {
-            y = x + 2;
+            d = "false";
+        }
+        return d;
+    }
+    public static String operation(int x, int y, int z) {
+        String d;
+        if (x/y==z) {
+            d= "multiply";
+        }
+        else if (x*y==z){
+            d= "to split";
+        }
+        else if (x-y==z){
+            d="fold";
+        }
+        else if (x+y==z){
+            d="subtract";
+        }
+        else {
+            d="none";
+        }
+        return d;
+    }
+    public static int ctoa() {
+        Scanner sc = new Scanner(System.in);
+        char c = sc.next().charAt(0);
+        int x = (char) c;
+        return x;
+    }
+    public static int addUpTo(int x){
+        int y=0;
+        while (x>0) {
+            y=y+x;
+            x=x-1;
         }
         return y;
     }
-
+    public static int nextEdge (int x, int y) {
+        int z=x+y-1;
+        return z;
+    }
+    public static int sumOfCubes(Scanner scanner) {
+        System.out.println("Введите количество элементов массива, и введите массив");
+        int size = scanner.nextInt();
+        int array[] = new int[size];
+        int sum = 0;
+        for (int counter = 0; counter < size; counter++) {
+            array[counter] = scanner.nextInt();
+        }
+        for (int counter = 0; counter < size; counter++) {
+            sum += Math.pow(array[counter], 3);
+        }
+        return sum;
+    }
+    public static boolean abcmath(int x,int y, int z) {
+        int d=2*x;
+        boolean e;
+        for (int i=1;i<y;i++){
+            d=2*d;
+        }
+        if (d%z==0) {
+            e=true;
+        }
+        else {
+            e=false;
+        }
+        return e;
+    }
 }
