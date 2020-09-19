@@ -7,29 +7,40 @@ public class Part_II {
         String zadanie = sc.nextLine();
         int x, y, z;
         double d;
+        System.out.print("Введите название задания");
         switch (zadanie) {
             case "repeat":
+                System.out.print("Введите строку");
                 System.out.println(repeat(sc));
             case "differenceMaxMin":
+                System.out.print("Введите строку");
                 System.out.println(raznMaxMin());
             case "isAvgWhole":
+                System.out.print("Введите строку");
                 System.out.println(isAvgWhole());
             case "cumulativeSum":
+                System.out.print("Введите строку");
                 ziklsum();
             case "getDecimalPlaces":
+                System.out.print("Введите число");
                 d=sc.nextDouble();
                 System.out.println(znaki(d));
             case "Fibonacci":
+                System.out.print("Введите число");
                 x=sc.nextInt();
                 System.out.println(fib(x));
             case "index":
+                System.out.print("Введите индекс");
                 System.out.println(index28());
             case "isStrangePair":
+                System.out.print("Введите две строки");
                 System.out.println(stran(sc));
             case "boxSeq":
+                System.out.print("Введите номер шага");
                 d=sc.nextDouble();
                 System.out.println(boxSeq(d));
             case "PrefSuf":
+                System.out.print("Введите строку, подстроку и аргумент(суфикс или префикс)");
                 System.out.println(PrefSuf(sc));
         }
     }

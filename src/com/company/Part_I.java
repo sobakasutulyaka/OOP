@@ -9,42 +9,53 @@ public class Part_I {
         Scanner sc=new Scanner(System.in);
         String zadanie=sc.nextLine();
         int x,y,z;
+        System.out.print("Введите название задания");
         switch (zadanie){
             case "remainder":
+                System.out.print("Введите 2 числа");
                 x=sc.nextInt();
                 y=sc.nextInt();
                 System.out.println(remainder(x,y));
             case "triArea":
+                System.out.print("Введите основание и высоту треугольника");
                 x=sc.nextInt();
                 y=sc.nextInt();
                 System.out.println(triArea(x,y));
             case "animals":
+                System.out.print("Введите число куриц, коров, свиней");
                 x=sc.nextInt();
                 y=sc.nextInt();
                 z=sc.nextInt();
                 System.out.println(animals(x,y,z));
             case "profitableGamble":
+                System.out.print("Введите три аргумента");
                 x=sc.nextInt();
                 y=sc.nextInt();
                 z=sc.nextInt();
                 System.out.println(profitableGamble(x,y,z));
             case "operation":
+                System.out.print("Введите 3 числа");
                 x=sc.nextInt();
                 y=sc.nextInt();
                 z=sc.nextInt();
                 System.out.println(operation(x,y,z));
             case "ctoa":
+                System.out.print("Введите символ");
                 System.out.println(ctoa());
             case "addUpTo":
+                System.out.print("Введите число");
                 x=sc.nextInt();
                 System.out.println(addUpTo(x));
             case "nextEdge":
+                System.out.print("Введите 2 стороны треугольника");
                 x=sc.nextInt();
                 y=sc.nextInt();
                 System.out.println(nextEdge(x,y));
             case "sumOfCubes":
+                System.out.print("Введите строку");
                 System.out.println(sumOfCubes(in));
             case "abcmath":
+                System.out.print("Введите 3 числа");
                 x=sc.nextInt();
                 y=sc.nextInt();
                 z=sc.nextInt();
