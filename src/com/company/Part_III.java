@@ -3,11 +3,11 @@ import java.util.*;
 
 public class Part_III {
     public static void main() {
+        System.out.println("Введите название задания");
         Scanner sc = new Scanner(System.in);
         String zadanie = sc.nextLine();
         int x, y, z;
         double d, h, g;
-        System.out.print("Введите название задания");
         switch (zadanie) { //выбор задания
             case "solution":
                 System.out.print("введите коэффициенты а,в,с");
@@ -16,21 +16,38 @@ public class Part_III {
                 g = sc.nextDouble();
                 kvadrati(d, h, g);
             case "checkPerfect":
-                System.out.print("Введите число");
+                System.out.println("Введите число");
                 x=sc.nextInt();
                 System.out.println(perf(x));
             case "findZip":
-                System.out.print("Введите строку");
+                System.out.println("Введите строку");
                 System.out.println(zip(sc));
             case "flipEndChars":
-                System.out.print("Введите строку");
+                System.out.println("Введите строку");
                 vhodvihod(sc);
             case "isValidHexCode":
-                System.out.print("Введите код");
+                System.out.println("Введите код");
                 System.out.print(cod(sc));
             case "same":
                 System.out.print(same(sc));
-                System.out.print("Введите числовую строку");
+                System.out.println("Введите числовую строку");
+            case "isKaprekar":
+                System.out.println("Введите число");
+                x=sc.nextInt();
+                System.out.print(Kap(x));
+            case "longestZero":
+                System.out.println("Введите строку 0 и 1");
+                noliki(sc);
+            case "nextPrime":
+                System.out.println("Введите число");
+                x=sc.nextInt();
+                System.out.print(prost(x));
+            case "rightTriangle":
+                System.out.println("Введите 3 стороны треугольника");
+                x=sc.nextInt();
+                y=sc.nextInt();
+                z=sc.nextInt();
+                System.out.print(pif(x,y,z));
         }
     }
     public static void kvadrati(double d,double h,double g){
@@ -180,7 +197,108 @@ public class Part_III {
         }
     return a;
     }
-
-
+    public static boolean Kap(int x){
+        int dlin=0;
+        int left=0;
+        int right=0;
+        boolean z;
+        int x1=x*x;
+        int y=x1;
+        while (x1 > 0){ //определение длинны числа
+            x1=x1/10;
+            dlin++;
+        }
+        if (dlin%2==0){ //случай при четной длинне числа
+            dlin=dlin/2;
+            left=(int)(y/Math.pow( 10, dlin )); //нахождение левой части
+            right=(int)(y%Math.pow( 10, dlin )); //нахождение правой части
+        }
+        else { //нечётная длинна числа
+            dlin=dlin/2;
+            left=(int) (y/Math.pow( 10, dlin+1 )); //нахождение левой части
+            right=(int)(y%Math.pow( 10, dlin+1 )); //нахождение правой части
+        }
+        if (left+right==x){ //сравнение суммы и данного числа
+            z=true;
+        }
+        else {
+            z=false;
+        }
+    return z;
+    }
+    public static void noliki(Scanner scanner){
+        String str=scanner.nextLine();
+        int n=str.length();
+        int sum=0;
+        int max=0;
+        for (int i=0; i<n; i++ ){ //проверка элементов строки на 0
+            if (str.charAt(i)=='0'){
+                sum++;
+            }
+            else {
+                if (sum>max){ //вычисление максимальной последовательности
+                    max=sum;
+                    sum=0;
+                }
+                else{
+                    sum=0;
+                }
+            }
+        }
+    System.out.print("0".repeat(max)); //вывод максимальной последовательности
+    }
+    public static int prost(int x){
+        int prov=0;
+        int prov2=0;
+        int konez=0;
+        int k=0;
+        for (int i=2; i<x; i++){ //проверка самого число на простое (перебор делением на все числа до данного)
+            if (x%i==0) {
+                prov++;
+            }
+        }
+        if (prov!=0){ //если число не простое то проверяются числа после данного
+            k=x+1;
+            while (prov2==0){ //тело проверки
+                for (int t=2; t<k;t++){
+                    if(k%t==0){
+                        prov2++;
+                        k++;
+                    }
+                }
+            }
+        }
+    if (prov==0) {
+        konez = x;
+    }
+        else {
+            konez=k;
+    }
+    return konez;
+    }
+    public static boolean pif(int x,int y,int z){
+        boolean kon=false;
+        if (x<y+z || y<x+z || z<x+y){ //проверка на стороны треугольника
+            if (x>y && x>z){ //проерка по т. Пифагора если х наибольший
+                if (x*x==y*y+z*z){
+                    kon=true;
+                }
+            }
+            else if (y>x && y>z){ //проерка по т. Пифагора если у наибольший
+                if (y*y==x*x+z*z){
+                    kon=true;
+                }
+            }
+            else if (z>x && z>y){ //проерка по т. Пифагора если z наибольший
+                if (z*z==x*x+y*y){
+                    kon=true;
+                }
+            }
+            else {
+                System.out.print("Числа не являются длинами сторон треугольника");
+            }
+        }
+    return kon;
+    }
 }
 
