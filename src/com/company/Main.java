@@ -19,6 +19,12 @@ public class Main {
             case 4 -> {
                 Part_IV.main();
             }
+            case 5 -> {
+                Part_V.main();
+            }
+            case 6 -> {
+                Part_VI.main();
+            }
         }
     }
 }
